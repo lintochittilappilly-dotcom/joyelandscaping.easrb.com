@@ -13,13 +13,13 @@ type Fields = {
 const empty: Fields = { name: "", phone: "", suburb: "", need: "", detail: "" };
 
 const fieldClass =
-  "mt-2 w-full border-b border-concrete/30 bg-transparent pb-2.5 font-display text-[15px] text-concrete placeholder:text-concrete/35 focus:border-concrete focus:outline-none";
+  "mt-2 w-full border-b border-line bg-transparent pb-2.5 font-display text-[15px] text-ink placeholder:text-ink/30 focus:border-fern focus:outline-none";
 
 const labelClass =
-  "block font-display text-[13px] font-medium text-concrete/70";
+  "block font-display text-[12.5px] font-medium text-muted";
 
 const actionClass =
-  "inline-flex items-center justify-center border border-concrete/35 px-4 py-2.5 font-display text-[13px] font-semibold text-concrete transition-colors hover:border-concrete hover:bg-concrete/5";
+  "inline-flex items-center justify-center rounded-[2px] border border-bark/25 px-4 py-2.5 font-display text-[12.5px] font-semibold text-bark transition-colors hover:border-bark hover:bg-bark/5";
 
 function compose(fields: Fields) {
   const subject = `Quote request: ${fields.need}`;
@@ -111,7 +111,7 @@ export default function QuoteForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="max-w-[560px]">
+    <form onSubmit={handleSubmit} noValidate>
       <div className="grid gap-7 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClass}>
@@ -130,7 +130,7 @@ export default function QuoteForm() {
             className={fieldClass}
           />
           {errors.name && (
-            <p id="name-error" className="mt-2 text-[0.85rem] text-flag">
+            <p id="name-error" className="mt-2 text-[0.82rem] text-[#9c3d22]">
               {errors.name}
             </p>
           )}
@@ -154,7 +154,7 @@ export default function QuoteForm() {
             className={fieldClass}
           />
           {errors.phone && (
-            <p id="phone-error" className="mt-2 text-[0.85rem] text-flag">
+            <p id="phone-error" className="mt-2 text-[0.82rem] text-[#9c3d22]">
               {errors.phone}
             </p>
           )}
@@ -187,7 +187,7 @@ export default function QuoteForm() {
             onChange={(e) => update("need", e.target.value)}
             aria-invalid={Boolean(errors.need)}
             aria-describedby={errors.need ? "need-error" : undefined}
-            className={`${fieldClass} bg-bark`}
+            className={`${fieldClass} bg-paper`}
           >
             <option value="">Choose one</option>
             {services.map((service) => (
@@ -199,7 +199,7 @@ export default function QuoteForm() {
             <option value="Something else">Something else</option>
           </select>
           {errors.need && (
-            <p id="need-error" className="mt-2 text-[0.85rem] text-flag">
+            <p id="need-error" className="mt-2 text-[0.82rem] text-[#9c3d22]">
               {errors.need}
             </p>
           )}
@@ -217,29 +217,29 @@ export default function QuoteForm() {
           value={fields.detail}
           onChange={(e) => update("detail", e.target.value)}
           placeholder="Roughly how many metres, sloping ground, where the access is"
-          className="mt-2 w-full resize-y border border-concrete/30 bg-transparent p-3 font-display text-[15px] text-concrete placeholder:text-concrete/35 focus:border-concrete focus:outline-none"
+          className="mt-2 w-full resize-y border border-line bg-transparent p-3 font-display text-[15px] text-ink placeholder:text-ink/30 focus:border-fern focus:outline-none"
         />
       </div>
 
       <button
         type="submit"
-        className="mt-8 w-full bg-concrete px-7 py-4 font-display text-[15px] font-semibold text-bark transition-colors hover:bg-white sm:w-auto"
+        className="mt-7 w-full rounded-[2px] bg-bark px-7 py-4 font-display text-[14.5px] font-semibold text-cream transition-colors hover:bg-forest sm:w-auto"
       >
         Send the details
       </button>
 
       {!sent && (
-        <p className="mt-5 max-w-[46ch] text-[0.92rem] text-concrete/65">
+        <p className="mt-5 max-w-[46ch] text-[0.9rem] leading-relaxed text-muted">
           Sending opens your email app with the details filled in. Nothing is
           stored on this site.
         </p>
       )}
 
       {sent && (
-        <div className="mt-6 border border-concrete/25 p-5">
+        <div className="mt-6 border border-line bg-cream/70 p-5">
           <p
             aria-live="polite"
-            className="max-w-[48ch] text-[0.95rem] leading-relaxed text-concrete/85"
+            className="max-w-[48ch] text-[0.94rem] leading-relaxed text-ink/85"
           >
             {copyState === "copied"
               ? "Copied. Paste it into an email to " + business.email + "."
@@ -265,11 +265,11 @@ export default function QuoteForm() {
             </a>
           </div>
 
-          <p className="mt-4 font-display text-[13px] text-concrete/60">
+          <p className="mt-4 font-display text-[12.5px] text-muted">
             Or send it to{" "}
             <a
               href={`mailto:${business.email}`}
-              className="text-concrete underline decoration-concrete/40 underline-offset-4 hover:decoration-concrete"
+              className="text-ink underline decoration-line underline-offset-4 hover:decoration-fern"
             >
               {business.email}
             </a>
@@ -281,10 +281,10 @@ export default function QuoteForm() {
             onToggle={(e) => setShowText(e.currentTarget.open)}
             className="mt-4"
           >
-            <summary className="cursor-pointer font-display text-[13px] text-concrete/60 transition-colors hover:text-concrete">
+            <summary className="cursor-pointer font-display text-[12.5px] text-muted transition-colors hover:text-ink">
               Show the details as text
             </summary>
-            <pre className="mt-2 max-w-full overflow-x-auto whitespace-pre-wrap border border-concrete/20 p-3 font-display text-[12.5px] leading-relaxed text-concrete/75">
+            <pre className="mt-2 max-w-full overflow-x-auto whitespace-pre-wrap border border-line bg-paper p-3 font-display text-[12px] leading-relaxed text-ink/75">
               {plain}
             </pre>
           </details>
