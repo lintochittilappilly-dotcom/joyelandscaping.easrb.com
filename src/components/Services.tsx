@@ -39,48 +39,58 @@ const materials = [
 
 export default function Services() {
   return (
-    <section id="services" className="scroll-mt-6">
-      <div className="mx-auto max-w-[1180px] px-6 py-20 md:px-10 md:py-28">
-        <div className="grid gap-8 lg:grid-cols-[1fr_0.75fr] lg:items-end">
-          <h2 className="max-w-[16ch] font-display text-[clamp(2rem,4.6vw,3.2rem)] font-extrabold leading-[0.98] tracking-[-0.03em]">
+    <section id="services" className="scroll-mt-24 bg-cream">
+      <div className="mx-auto max-w-[1240px] px-6 py-20 md:px-10 md:py-28">
+        <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+          <h2 className="max-w-[15ch] font-display text-[clamp(2.1rem,4.6vw,3.3rem)] font-extrabold leading-[0.95] tracking-[-0.035em]">
             What we build
           </h2>
-          <p className="max-w-[38ch] text-[1.02rem] leading-[1.6] text-muted lg:pb-2">
+          <p className="max-w-[40ch] text-[1.03rem] leading-[1.62] text-muted lg:pb-1.5">
             Fences first, then the walls, paths and garden work that go with
-            them. Most jobs are one of these, and plenty are a few of them at
-            once.
+            them. Most jobs are one of these; plenty are a few at once.
           </p>
         </div>
 
-        <dl className="mt-12 grid gap-x-12 border-t border-bark/15 md:grid-cols-2 lg:grid-cols-3">
+        <dl className="mt-12 grid border-t border-line md:grid-cols-2 md:gap-x-16">
           {services.map((service) => (
-            <div key={service.name} className="border-b border-bark/15 py-7">
-              <dt className="font-display text-[1.12rem] font-semibold tracking-[-0.015em]">
+            <div
+              key={service.name}
+              className="group border-b border-line py-7 md:py-8"
+            >
+              <dt className="flex items-baseline gap-3 font-display text-[1.08rem] font-semibold tracking-[-0.012em]">
+                <span
+                  aria-hidden="true"
+                  className="h-[6px] w-[6px] shrink-0 translate-y-[-2px] rounded-full bg-fern/0 transition-colors group-hover:bg-fern"
+                />
                 {service.name}
               </dt>
-              <dd className="mt-2 max-w-[40ch] text-[0.98rem] leading-[1.58] text-muted">
+              <dd className="mt-2 max-w-[46ch] pl-[18px] leading-[1.6] text-muted">
                 {service.detail}
               </dd>
             </div>
           ))}
         </dl>
+      </div>
 
-        <div className="mt-16">
-          <h3 className="font-display text-[13px] font-semibold uppercase tracking-[0.16em] text-muted">
+      <div className="border-y border-line bg-paper">
+        <div className="mx-auto max-w-[1240px] px-6 py-14 md:px-10">
+          <h3 className="font-display text-[0.95rem] font-semibold text-ink">
             Materials we work in
           </h3>
-          <ul className="mt-5 grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-6 grid gap-x-6 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
             {materials.map((material) => (
               <li key={material.name}>
                 <div
                   aria-hidden="true"
-                  className="h-16 w-full border border-bark/15"
+                  className="h-16 w-full border border-ink/10"
                   style={material.style}
                 />
-                <p className="mt-3 font-display text-[14px] font-semibold">
+                <p className="mt-3 font-display text-[13.5px] font-semibold">
                   {material.name}
                 </p>
-                <p className="text-[0.92rem] text-muted">{material.note}</p>
+                <p className="text-[0.92rem] leading-snug text-muted">
+                  {material.note}
+                </p>
               </li>
             ))}
           </ul>
