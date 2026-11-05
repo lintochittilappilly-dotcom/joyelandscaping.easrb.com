@@ -1,4 +1,4 @@
-import { business } from "../site";
+import { business, logo } from "../site";
 
 const links = [
   { href: "#services", label: "What we build" },
@@ -8,37 +8,45 @@ const links = [
 
 export default function Header() {
   return (
-    <header className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-6 px-6 py-6 md:px-10">
-      <a href="#top" className="flex flex-col leading-none">
-        <span className="font-display text-[1.35rem] font-extrabold tracking-[-0.02em]">
-          Joye
-        </span>
-        <span className="mt-1 font-display text-[10px] font-medium uppercase tracking-[0.2em] text-galv">
-          Landscaping &amp; Fencing
-        </span>
-      </a>
+    <div className="sticky top-0 z-50 border-b border-line/80 bg-cream/90 backdrop-blur-md">
+      <header className="mx-auto flex max-w-[1240px] items-center justify-between gap-6 px-6 py-3 md:px-10">
+        <a href="#top" className="flex items-center gap-3">
+          <img
+            src={logo}
+            alt=""
+            width={46}
+            height={46}
+            className="h-[46px] w-[46px]"
+          />
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-[1.2rem] font-extrabold tracking-[-0.03em]">
+              Joye
+            </span>
+            <span className="mt-1 font-display text-[10px] font-medium tracking-[0.16em] text-muted">
+              LANDSCAPING &amp; FENCING
+            </span>
+          </span>
+        </a>
 
-      <nav
-        aria-label="Main"
-        className="hidden items-center gap-8 md:flex"
-      >
-        {links.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className="font-display text-[14px] font-medium text-concrete/75 transition-colors hover:text-concrete"
-          >
-            {link.label}
-          </a>
-        ))}
-      </nav>
+        <nav aria-label="Main" className="hidden items-center gap-9 md:flex">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="font-display text-[13.5px] font-medium text-ink/70 underline decoration-transparent decoration-1 underline-offset-[6px] transition-colors hover:text-ink hover:decoration-fern"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
-      <a
-        href={business.phones[0].href}
-        className="font-display text-[14px] font-semibold text-concrete underline decoration-galv/50 decoration-1 underline-offset-4 transition-colors hover:decoration-concrete"
-      >
-        Call {business.phones[0].display}
-      </a>
-    </header>
+        <a
+          href={business.phones[0].href}
+          className="hidden items-center gap-2 rounded-[2px] bg-bark px-4 py-2.5 font-display text-[13px] font-semibold text-cream transition-colors hover:bg-forest sm:inline-flex"
+        >
+          {business.phones[0].display}
+        </a>
+      </header>
+    </div>
   );
 }
