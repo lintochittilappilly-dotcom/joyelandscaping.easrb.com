@@ -9,6 +9,12 @@
  *    the usual jobs this work covers. Delete anything the crew does not do.
  */
 
+/**
+ * The logo shown in the header, hero and footer. Point this at "/logo.png" to
+ * use the crew's own export instead of the redrawn seal.
+ */
+export const logo = "/logo.svg";
+
 export const business = {
   name: "Joye Landscaping & Fencing",
   shortName: "Joye",
