@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bark: #1d1814;
+  --color-concrete: #e9e6dd;
+  --color-eucalypt: #33452e;
+  --color-galv: #b9bdb6;
+  --color-muted: #5c574e;
+  --color-flag: #e0a98f;
+
+  --font-display: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Newsreader Variable", Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-concrete);
+    color: var(--color-bark);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-eucalypt);
+    color: var(--color-concrete);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-eucalypt);
+    outline-offset: 3px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-concrete);
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+/* One orchestrated moment on load: the fence line is drawn, then the posts land. */
+@keyframes trace {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes set-post {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.trace {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: trace 1.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.set-post {
+  opacity: 0;
+  animation: set-post 0.5s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .trace,
+  .set-post {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
