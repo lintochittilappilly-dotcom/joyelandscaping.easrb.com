@@ -13,7 +13,21 @@
  * The logo shown in the header, hero and footer. Point this at "/logo.png" to
  * use the crew's own export instead of the redrawn seal.
  */
-export const logo = "/logo.svg";
+/**
+ * The crew's own seal, straight from public/logo.jpg, so there is no second
+ * export to keep in sync. That file is a circle on a white background; the
+ * circular window in components/Seal.tsx crops the white away. Geometry is
+ * measured from the 1600px source: seal centre (784, 802), radius 495.6.
+ */
+export const logo = "/logo.jpg";
+
+export const seal = {
+  centreX: 49, // 784 / 1600
+  centreY: 50.125, // 802 / 1600
+  // 100 / (2 x 492 / 1600): the seal is 991px wide, cropped a few pixels inside
+  // its brown ring so no pale JPEG edge shows against the dark hero.
+  scale: 162.6,
+} as const;
 
 export const business = {
   name: "Joye Landscaping & Fencing",
