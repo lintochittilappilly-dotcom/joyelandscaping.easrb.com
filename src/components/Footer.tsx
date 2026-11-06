@@ -1,4 +1,5 @@
-import { business, logo } from "../site";
++import { business } from "../site";
++import Seal from "./Seal";
 
 const year = new Date().getFullYear();
 
@@ -9,13 +10,7 @@ export default function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <img
-                src={logo}
-                alt=""
-                width={52}
-                height={52}
-                className="h-[52px] w-[52px]"
-              />
+              <Seal className="h-[52px] w-[52px]" />
               <span className="flex flex-col leading-none">
                 <span className="font-display text-[1.25rem] font-extrabold tracking-[-0.03em]">
                   {business.shortName}
