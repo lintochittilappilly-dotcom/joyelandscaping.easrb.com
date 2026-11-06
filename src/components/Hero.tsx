@@ -1,4 +1,5 @@
-import { business, logo } from "../site";
++import { business } from "../site";
++import Seal, { sealLabel } from "./Seal";
 
 const sunburst = Array.from({ length: 30 }, (_, i) => {
   const a = (i / 30) * Math.PI * 2;
@@ -69,13 +70,10 @@ export default function Hero() {
               aria-hidden="true"
               className="absolute inset-0 translate-x-3 translate-y-3 rounded-full border border-cream/25"
             />
-            <img
-              src={logo}
-              alt={`${business.name} logo`}
-              width={1024}
-              height={1024}
-              className="relative w-full drop-shadow-[0_22px_50px_rgba(0,0,0,0.45)]"
-            />
+            <Seal
++              className="relative aspect-square w-full drop-shadow-[0_22px_50px_rgba(0,0,0,0.45)]"
++              label={sealLabel}
++            />
           </div>
         </div>
 
